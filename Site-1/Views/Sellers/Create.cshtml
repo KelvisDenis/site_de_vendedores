@@ -1,0 +1,47 @@
+﻿@model Site_1.Models.Extension.SellerFormViewModel
+@{
+    ViewData["Tl"] = "Create";
+}
+<h2>@ViewData["Tl"]</h2>
+
+<h4>Seller</h4>
+<hr/>
+<form asp-action="Create" method="post" >
+    <div class="mb-3">
+        <label asp-for="seller.Name" class="form-label"></label>
+        <input asp-for="seller.Name" class="form-control">
+        <span asp-validation-for="seller.Name" class="text-danger"></span>
+
+    </div>
+    <div class="mb-3">
+        <label asp-for="seller.Email" class="form-label"></label>
+        <input asp-for="seller.Email" class="form-control">
+        <span asp-validation-for="seller.Email" class="text-danger"></span>
+
+    </div>
+    <div class="mb-3">
+        <label asp-for="seller.BirthDate" class="form-label"></label>
+        <input asp-for="seller.BirthDate" class="form-control">
+        <span asp-validation-for="seller.BirthDate" class="text-danger"></span>
+
+    </div>
+    <div class="mb-3">
+        <label asp-for="seller.BaseSalary" class="form-label"></label>
+        <input asp-for="seller.BaseSalary" class="form-control">
+        <span asp-validation-for="seller.BaseSalary" class="text-danger"></span>
+
+    </div>
+   <div class="form-group">
+       <label asp-for="seller.DepartamentId" class="control-lable"></label>
+       <select asp-for="seller.DepartamentId" asp-items="@(new SelectList(Model.departaments, "Id","Nome"))"></select>
+   </div>
+    <div class="form-control" >
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
